@@ -116,6 +116,9 @@ public abstract class AbstractClient implements Runnable
     this.port = port;
   }
 
+  public AbstractClient(int port) {
+  }
+
 // INSTANCE METHODS *************************************************
 
   /**

@@ -65,8 +65,8 @@ import java.io.*;
 * @author Fran&ccedil;ois B&eacute;langer
 * @author Paul Holden
 * @version December 2003 (2.31)
-* @see com.lloseng.ocsf.server.ConnectionToClient
-* @see com.lloseng.ocsf.server.AbstractConnectionFactory
+//* @see com.lloseng.ocsf.server.ConnectionToClient
+//* @see com.lloseng.ocsf.server.AbstractConnectionFactory
 */
 public abstract class AbstractServer implements Runnable
 {
@@ -481,7 +481,7 @@ public abstract class AbstractServer implements Runnable
    * that can be thrown by the message handling method implemented by the user.
    *
    * @param client the client that raised the exception.
-   * @param Throwable the exception thrown.
+//   * @param Throwable the exception thrown.
    */
   synchronized protected void clientException(
     ConnectionToClient client, Throwable exception) {}
@@ -530,7 +530,7 @@ public abstract class AbstractServer implements Runnable
    *  sent the message.
    */
   protected abstract void handleMessageFromClient(
-    Object msg, ConnectionToClient client);
+    Object msg, ConnectionToClient client) throws Exception;
 
 
 // METHODS TO BE USED FROM WITHIN THE FRAMEWORK ONLY ----------------
@@ -548,8 +548,7 @@ public abstract class AbstractServer implements Runnable
    *  sent the message.
    */
   final synchronized void receiveMessageFromClient(
-    Object msg, ConnectionToClient client)
-  {
+    Object msg, ConnectionToClient client) throws Exception {
     this.handleMessageFromClient(msg, client);
   }
 }
